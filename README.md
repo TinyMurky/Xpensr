@@ -17,6 +17,8 @@ please run:
 ```
 chmod +x ./scripts/post-pub-get.sh
 ./scripts/post-pub-get.sh
+./scripts/install-hooks.bash
+./scripts/pre-commit.bash
 ```
 to install pre-commit hook in scripts
 
