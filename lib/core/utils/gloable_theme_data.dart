@@ -1,3 +1,4 @@
+// Reference:
 // https://medium.com/@nikhithsunil/theme-your-flutter-app-a-guide-to-themedata-and-colorscheme-d8bca920a6b5
 
 import 'package:flutter/material.dart';
@@ -10,7 +11,10 @@ class GloableThemeData {
   // secondary RGB 206, 226, 223 #cee2df 隆河, onSecondary RGB 21, 2, 1 #150201 寒鴉
 
   static final Color _lightFocusColor = Colors.black.withValues(alpha: 30);
+  static final Color _lightBackgroundColor = white90;
+
   static final Color _darkFocusColor = Colors.white.withValues(alpha: 30);
+  static final Color _darkBackgroundColor = black90;
 
   static const ColorScheme lightColorScheme = ColorScheme(
     primary: byzantiumBlue,
@@ -39,19 +43,30 @@ class GloableThemeData {
   static ThemeData lightThemeData = themeData(
     colorScheme: lightColorScheme,
     focusColor: _lightFocusColor,
+    backgroundColor: _lightBackgroundColor,
   );
 
   static ThemeData darkThemeData = themeData(
     colorScheme: darkColorScheme,
     focusColor: _darkFocusColor,
+    backgroundColor: _darkBackgroundColor,
   );
 
   /// Return theme data by colorScheme and focus color
+  /// Put setting that is common between light mode and dark mode in `defaultThemeData`
   /// focusColor : This color is used by widgets like TextFields and TextFormField to indicate the widget has a primary focus.
   static ThemeData themeData({
     required ColorScheme colorScheme,
     required Color focusColor,
+    required Color backgroundColor,
   }) {
-    return ThemeData(colorScheme: colorScheme, focusColor: focusColor);
+    final ThemeData defaultThemeData = ThemeData(
+      colorScheme: colorScheme,
+      focusColor: focusColor,
+      canvasColor: backgroundColor,
+      scaffoldBackgroundColor: backgroundColor,
+      highlightColor: Colors.transparent,
+    );
+    return defaultThemeData;
   }
 }
