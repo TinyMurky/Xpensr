@@ -12,6 +12,14 @@ Then download java sdk tar version in [jdk archive](https://www.oracle.com/java/
 
 Then Use `flutter config --jdk-dir=<jdk-direct>` to set up flutter default java sdk
 
+## Git hook install
+please run:
+```
+chmod +x ./scripts/post-pub-get.sh
+./scripts/post-pub-get.sh
+```
+to install pre-commit hook in scripts
+
 
 ## Getting Started
 

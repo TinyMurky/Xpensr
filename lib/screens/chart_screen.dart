@@ -11,12 +11,7 @@ class ChartScreen extends StatefulWidget {
 
 class _ChartScreenState extends State<ChartScreen> {
   @override
-    Widget build(BuildContext context) {
-
-      return Text("I am Chart");
-    }
+  Widget build(BuildContext context) {
+    return Text("I am Chart");
+  }
 }
-
-
-
-

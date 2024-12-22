@@ -5,4 +5,3 @@ import 'package:xpensr/xpensr.dart';
 void main() {
   runApp(const Xpensr());
 }
-

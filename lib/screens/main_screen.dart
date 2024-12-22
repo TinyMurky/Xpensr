@@ -8,7 +8,6 @@ import 'package:xpensr/core/constants/screen.dart';
 import 'package:xpensr/screens/book_keeping_screen.dart';
 import 'package:xpensr/screens/chart_screen.dart';
 
-
 /// This is the Navigation Bar page
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -37,14 +36,14 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   @override
-    void initState() {
-      super.initState();
+  void initState() {
+    super.initState();
 
-      screensWillBeDisplayed = [
-        BookKeepingScreen(),
-        ChartScreen(),
-      ];
-    }
+    screensWillBeDisplayed = [
+      BookKeepingScreen(),
+      ChartScreen(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +57,8 @@ class _MainScreenState extends State<MainScreen> {
         onTap: _changeScreenByIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.calculate),
-            label: 'Book Keepeing'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Chart'
-          ),
+              icon: Icon(Icons.calculate), label: 'Book Keepeing'),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Chart'),
         ],
       ),
     );

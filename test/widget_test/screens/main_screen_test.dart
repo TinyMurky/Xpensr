@@ -59,11 +59,9 @@ void main() {
       await tester.tap(find.byIcon(Icons.bar_chart));
       await tester.pumpAndSettle();
 
-
       // Test if page is ChartScreen after tap
       expect(find.byType(BookKeepingScreen), findsNothing);
       expect(find.byType(ChartScreen), findsOneWidget);
-
 
       // tap calculate icon
       await tester.tap(find.byIcon(Icons.calculate));
