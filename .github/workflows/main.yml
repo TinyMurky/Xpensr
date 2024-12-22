@@ -28,7 +28,7 @@ jobs:
       
       # Run Test
       - name: Run `flutter test`
-        uses: flutter test
+        run: flutter test
   # build:
     # steps:
   # release:
