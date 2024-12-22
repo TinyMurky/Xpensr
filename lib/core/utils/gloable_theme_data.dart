@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:expense_tracker_app/core/constants/colors.dart';
+import 'package:xpensr/core/constants/colors.dart';
 
 ///This Class can get same theme data but only change color schema
 class GloableThemeData {

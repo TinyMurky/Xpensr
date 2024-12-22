@@ -4,9 +4,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:expense_tracker_app/core/constants/screen.dart';
-import 'package:expense_tracker_app/screens/book_keeping_screen.dart';
-import 'package:expense_tracker_app/screens/chart_screen.dart';
+import 'package:xpensr/core/constants/screen.dart';
+import 'package:xpensr/screens/book_keeping_screen.dart';
+import 'package:xpensr/screens/chart_screen.dart';
 
 
 /// This is the Navigation Bar page
