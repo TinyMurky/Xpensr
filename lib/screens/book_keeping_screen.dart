@@ -13,6 +13,11 @@ class BookKeepingScreen extends StatefulWidget {
 class _BookKeepingScreenState extends State<BookKeepingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Text('I am Book keeping page');
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Text('temp') // ListView.builder(itemBuilder: itemBuilder),
+      ),
+    );
   }
 }
