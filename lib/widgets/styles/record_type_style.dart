@@ -10,10 +10,10 @@ class RecordTypeStyle {
   final String displayedName;
 
   /// Determine how lighten the lightenColor Compare to original color
-  final double _lightenColorAdjustDegree = 0.1;
+  final double _lightenColorAdjustDegree = 1.4;
 
   /// Determine how darken the darkenColor Compare to original color
-  final double _darkenColorAdjustDegree = -0.1;
+  final double _darkenColorAdjustDegree = 0.4;
 
   const RecordTypeStyle({
     required this.icon,
@@ -33,138 +33,134 @@ class RecordTypeStyle {
     return style;
   }
 
-
   /// Get lighter version of Color
   Color get lightenColor {
-    return changeColorLightness(
+    return makeColorMorePinky(
       color: color,
-      amount: _lightenColorAdjustDegree,
+      lightenDegree: _lightenColorAdjustDegree,
     );
   }
-
 
   /// Get darken version of Color
-  Color get darkColor {
-    return changeColorLightness(
+  Color get darkerColor {
+    return makeColorMorePinky(
       color: color,
-      amount: _darkenColorAdjustDegree,
+      lightenDegree: _darkenColorAdjustDegree,
     );
   }
-
-
 
   static const Map<RecordType, RecordTypeStyle> styles = {
     // 收入類型
     RecordType.salary: RecordTypeStyle(
       icon: Icons.attach_money,
       displayedName: 'Salary',
-      color: Colors.greenAccent,
+      color: Color.fromARGB(255, 239, 83, 80),
     ),
     RecordType.bonus: RecordTypeStyle(
       icon: Icons.card_giftcard,
       displayedName: 'Bonus',
-      color: Colors.pinkAccent,
+      color: Color.fromARGB(255, 236, 64, 122),
     ),
     RecordType.investment: RecordTypeStyle(
       icon: Icons.trending_up,
       displayedName: 'Investment',
-      color: Colors.teal,
+      color: Color.fromARGB(255, 171, 71, 188),
     ),
     RecordType.rent: RecordTypeStyle(
       icon: Icons.home,
       displayedName: 'Rent Income',
-      color: Colors.blueGrey,
+      color: Color.fromARGB(255, 126, 87, 194),
     ),
     RecordType.freelance: RecordTypeStyle(
       icon: Icons.work_outline,
       displayedName: 'Freelance',
-      color: Colors.orange,
+      color: Color.fromARGB(255, 92, 107, 192),
     ),
     RecordType.interest: RecordTypeStyle(
       icon: Icons.savings,
       displayedName: 'Interest',
-      color: Colors.lightBlueAccent,
+      color: Color.fromARGB(255, 66, 165, 254),
     ),
     RecordType.otherIncome: RecordTypeStyle(
       icon: Icons.account_balance,
       displayedName: 'Other Income',
-      color: Colors.amber,
+      color: Color.fromARGB(255, 41, 182, 246),
     ),
     // 支出類型
     RecordType.shopping: RecordTypeStyle(
       icon: Icons.shopping_cart,
       displayedName: 'Shopping',
-      color: Colors.redAccent,
+      color: Color.fromARGB(255, 38, 198, 218),
     ),
     RecordType.dining: RecordTypeStyle(
       icon: Icons.restaurant,
       displayedName: 'Dining',
-      color: Colors.deepOrangeAccent,
+      color: Color.fromARGB(255, 38, 166, 154),
     ),
     RecordType.transport: RecordTypeStyle(
       icon: Icons.directions_car,
       displayedName: 'Transport',
-      color: Colors.blueAccent,
+      color: Color.fromARGB(255, 102, 187, 106),
     ),
     RecordType.travel: RecordTypeStyle(
       icon: Icons.flight,
       displayedName: 'Travel',
-      color: Colors.lightBlue,
+      color: Color.fromARGB(255, 156, 204, 101),
     ),
     RecordType.utilities: RecordTypeStyle(
       icon: Icons.electrical_services,
       displayedName: 'Utilities',
-      color: Colors.purpleAccent,
+      color: Color.fromARGB(255, 212, 225, 87),
     ),
     RecordType.healthcare: RecordTypeStyle(
       icon: Icons.local_hospital,
       displayedName: 'Healthcare',
-      color: Colors.red,
+      color: Color.fromARGB(255, 255, 238, 88),
     ),
     RecordType.education: RecordTypeStyle(
       icon: Icons.school,
       displayedName: 'Education',
-      color: Colors.indigo,
+      color: Color.fromARGB(255, 255, 202, 40),
     ),
     RecordType.entertainment: RecordTypeStyle(
       icon: Icons.movie,
       displayedName: 'Entertainment',
-      color: Colors.pink,
+      color: Color.fromARGB(255, 255, 167, 38),
     ),
     RecordType.insurance: RecordTypeStyle(
       icon: Icons.shield,
       displayedName: 'Insurance',
-      color: Colors.blueGrey,
+      color: Color.fromARGB(255, 255, 112, 67),
     ),
     RecordType.gifts: RecordTypeStyle(
       icon: Icons.card_giftcard,
       displayedName: 'Gifts',
-      color: Colors.green,
+      color: Color.fromARGB(255, 229, 115, 115),
     ),
     RecordType.subscriptions: RecordTypeStyle(
       icon: Icons.subscriptions,
       displayedName: 'Subscriptions',
-      color: Colors.cyan,
+      color: Color.fromARGB(255, 240, 98, 146),
     ),
     RecordType.charity: RecordTypeStyle(
       icon: Icons.volunteer_activism,
       displayedName: 'Charity',
-      color: Colors.lightGreen,
+      color: Color.fromARGB(255, 186, 104, 200),
     ),
     RecordType.rentExpense: RecordTypeStyle(
       icon: Icons.home,
       displayedName: 'Rent Expense',
-      color: Colors.brown,
+      color: Color.fromARGB(255, 149, 117, 205),
     ),
     RecordType.taxes: RecordTypeStyle(
       icon: Icons.account_balance,
       displayedName: 'Taxes',
-      color: Colors.deepPurple,
+      color: Color.fromARGB(255, 121, 134, 203),
     ),
     RecordType.otherExpenses: RecordTypeStyle(
       icon: Icons.more_horiz,
       displayedName: 'Other Expenses',
-      color: Colors.grey,
+      color: Color.fromARGB(255, 100, 181, 246),
     ),
   };
 }

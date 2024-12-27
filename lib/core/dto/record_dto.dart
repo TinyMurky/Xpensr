@@ -59,7 +59,7 @@ class RecordDto {
   String toLocalAmountString() {
     final isNegative = localAmount < 0;
     final String minusSign = isNegative ? '-' : '';
-    final String localAmountString = localAmount.toStringAsFixed(2);
+    final String localAmountString = localAmount.abs().toStringAsFixed(2);
     final String display = '$minusSign\$$localAmountString';
     return display;
   }

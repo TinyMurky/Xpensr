@@ -37,54 +37,48 @@ class _RecordCardState extends State<RecordCard> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Brightness brightness = theme.brightness;
     final ColorScheme colorScheme = theme.colorScheme;
 
     final Color selectedIconColor = rhoneBlue;
-    final Color selectedIconBackGroundColor = brightness == Brightness.light
-        ? changeColorLightness(color: rhoneBlue, amount: 0.1)
-        : changeColorLightness(color: rhoneBlue, amount: -0.1);
+    final Color selectedCircleAvatarBackGroundColor =
+        makeColorMorePinky(color: byzantiumBlue, lightenDegree: 2.5);
+    final Color circleAvatarBackGroundColor =
+        widget.recordTypeStyle.lightenColor;
+
+    Color switchColorBaseOnWidgetState({
+      required Color selectedColor,
+      required Color defaultColor,
+    }) {
+      if (!_enabled) return colorScheme.error;
+      if (_selected) return selectedColor;
+      return defaultColor;
+    }
 
     return Card(
+      elevation: _selected ? 1 : 4, // This control shadow
       child: ListTile(
         enabled: _enabled,
         selected: _selected,
         onTap: _listTileOnTab,
-        leading: FittedBox(
-          child: CircleAvatar(
-            backgroundColor: WidgetStateColor.fromMap(
-              <WidgetStatesConstraint, Color>{
-                WidgetState.disabled: colorScheme.error,
-                WidgetState.selected: selectedIconBackGroundColor,
-                WidgetState.any: widget.recordTypeStyle.color,
-              },
-            ),
-            child: Icon(
-              widget.recordTypeStyle.icon,
-              color: WidgetStateColor.fromMap(
-                <WidgetStatesConstraint, Color>{
-                  WidgetState.disabled: colorScheme.onError,
-                  WidgetState.selected: selectedIconColor,
-                  WidgetState.any: widget.recordTypeStyle.color,
-                },
-              ),
+        leading: CircleAvatar(
+          radius: 25,
+          backgroundColor: switchColorBaseOnWidgetState(
+            selectedColor: selectedCircleAvatarBackGroundColor,
+            defaultColor: circleAvatarBackGroundColor,
+          ),
+          child: Icon(
+            widget.recordTypeStyle.icon,
+            color: switchColorBaseOnWidgetState(
+              selectedColor: selectedIconColor,
+              defaultColor: widget.recordTypeStyle.color,
             ),
           ),
         ),
-        textColor: WidgetStateColor.resolveWith((Set<WidgetState> states) {
-          if (states.contains(WidgetState.disabled)) {
-            return colorScheme.error;
-          }
-          if (states.contains(WidgetState.selected)) {
-            return rhoneBlue;
-          }
-          return colorScheme.onSurface;
-        }),
         title: Text(
           // Record name that user input
           widget.recordDto.title,
           style: TextStyle(
-            color: Colors.black,
+            color: colorScheme.onSurface,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -92,13 +86,16 @@ class _RecordCardState extends State<RecordCard> {
           // Display name of recordType
           widget.recordTypeStyle.displayedName,
           style: TextStyle(
-            color: Colors.black54,
+            color: changeColorLightness(
+                color: colorScheme.onSurface, amount: -0.2),
           ),
         ),
         trailing: Text(
           widget.recordDto.toLocalAmountString(),
           style: TextStyle(
-            color: widget.recordDto.localAmount < 0 ? colorScheme.error : colorScheme.onSurface,
+            color: widget.recordDto.localAmount < 0
+                ? colorScheme.error
+                : colorScheme.onSurface,
           ),
         ),
       ),
