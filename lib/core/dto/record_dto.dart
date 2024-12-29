@@ -3,7 +3,7 @@ import 'package:xpensr/core/constants/record.dart';
 
 class RecordDto {
   /// The transaction amount in foreign currency
-  final double amount;
+  double _amount;
 
   /// the currency used fot the transaction (Ex: usd)
   final CurrencyType currency;
@@ -19,32 +19,43 @@ class RecordDto {
   /// Title that display on listtile title
   final String title;
 
-  RecordDto(
-      {
-      required this.amount,
-      required this.currency,
-      required this.exchangeRate,
-      required this.systemBaseCurrency,
-      required this.type,
-      required this.title,
-  });
+  RecordDto({
+    required double amount,
+    required this.currency,
+    required this.exchangeRate,
+    required this.systemBaseCurrency,
+    required this.type,
+    required this.title,
+  }) : _amount = amount;
 
   /// systemBaseCurrency set to tw
   RecordDto.withSystemCurrency({
-    required this.amount,
+    required double amount,
     required this.currency,
     required this.exchangeRate,
     required this.type,
     required this.title,
-  }) : systemBaseCurrency = CurrencyType.twd;
+  })  : _amount = amount,
+        systemBaseCurrency = CurrencyType.twd;
 
   RecordDto.twd({
-    required this.amount,
+    required double amount,
     required this.type,
     required this.title,
-  })  : currency = CurrencyType.twd,
+  })  : _amount = amount,
+        currency = CurrencyType.twd,
         exchangeRate = 1.0,
         systemBaseCurrency = CurrencyType.twd;
+
+  double get amount {
+    final int sign = type.isIncome ? 1 : -1;
+    return _amount * sign;
+  }
+
+  /// Always Store non0negative number
+  set amount(double input) {
+    _amount = input.abs();
+  }
 
   /// The converted amount from currency to base currency
   double get localAmount {
