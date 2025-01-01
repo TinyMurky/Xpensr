@@ -26,6 +26,10 @@ jobs:
         with:
           flutter-version: '3.27.1'
       
+      # insatll sqlite3 for sqflite in Flutter app
+      - name: Install Sqlite3
+        run: sudo apt-get -y install libsqlite3-0 libsqlite3-dev
+
       # Run Test
       - name: Run `flutter test`
         run: flutter test
