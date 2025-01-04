@@ -21,6 +21,8 @@ class RecordDto {
   /// Title that display on listtile title
   final String title;
 
+  final DateTime date;
+
   DateTime? createdAt;
 
   DateTime? updatedAt;
@@ -34,6 +36,7 @@ class RecordDto {
     required this.systemBaseCurrency,
     required this.type,
     required this.title,
+    required this.date,
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -47,6 +50,7 @@ class RecordDto {
     required this.exchangeRate,
     required this.type,
     required this.title,
+    required this.date,
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -58,6 +62,7 @@ class RecordDto {
     required double amount,
     required this.type,
     required this.title,
+    required this.date,
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -86,6 +91,7 @@ class RecordDto {
       orElse: () => RecordType.otherExpenses,
     );
 
+    DateTime columnDate = DateTime.parse(map["date"] as String);
     DateTime columnCreatedAt = DateTime.parse(map["created_at"] as String);
     DateTime columnUpdatedAt = DateTime.parse(map["updated_at"] as String);
 
@@ -103,6 +109,7 @@ class RecordDto {
       exchangeRate: columnExchangeRate,
       systemBaseCurrency: columnSystemBaseCurrency,
       type: columnType,
+      date: columnDate,
       createdAt: columnCreatedAt,
       updatedAt: columnUpdatedAt,
       deletedAt: columnDeletedAt,
@@ -119,6 +126,7 @@ class RecordDto {
       "currency": currency.toString(),
       "exchange_rate": exchangeRate,
       "system_base_currency": systemBaseCurrency.toString(),
+      "date": date.toIso8601String(),
       "type": type.toString(),
     };
 

@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:xpensr/core/constants/screen.dart';
+import 'package:xpensr/core/utils/color.dart';
 import 'package:xpensr/screens/book_keeping_screen.dart';
 import 'package:xpensr/screens/chart_screen.dart';
 
@@ -47,12 +48,40 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
+    ColorScheme colorScheme = themeData.colorScheme;
+
     return Scaffold(
       body: IndexedStack(
         index: _currentScreen.toIndex,
         children: screensWillBeDisplayed,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
+          color: colorScheme.surface, // 背景顏色與底部欄一致
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: themeData.scaffoldBackgroundColor, // 外圈顏色
+            width: 5, // 外圈寬度
+          ),
+        ),
+        child: FloatingActionButton(
+          shape: CircleBorder(),
+          foregroundColor: colorScheme.onSecondary,
+          backgroundColor: colorScheme.secondary,
+          onPressed: () {},
+          child: const Icon(Icons.add, size: 30),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0.5,
+        backgroundColor: colorScheme.primary,
+        unselectedItemColor: makeColorMorePinky(
+            color: colorScheme.onPrimary, lightenDegree: 0.6),
+        selectedItemColor: colorScheme.onPrimary,
         currentIndex: _currentScreen.toIndex,
         onTap: _changeScreenByIndex,
         items: const <BottomNavigationBarItem>[

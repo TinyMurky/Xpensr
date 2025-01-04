@@ -16,6 +16,7 @@ void main() {
         currency: CurrencyType.usd,
         exchangeRate: 32.0,
         type: RecordType.interest,
+        date: DateTime(2025, 1, 1),
         title: 'test title',
       );
 
@@ -47,6 +48,7 @@ void main() {
         currency: CurrencyType.usd,
         exchangeRate: 32.0,
         type: RecordType.interest,
+        date: DateTime(2025, 1, 1),
         title: 'test title',
       );
 

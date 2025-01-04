@@ -13,6 +13,7 @@ void main() {
           exchangeRate: 32.0,
           type: RecordType.interest,
           title: 'test',
+          date: DateTime(2025, 1, 1),
       );
       expect(recordDto.systemBaseCurrency, CurrencyType.twd);
     });
@@ -31,6 +32,7 @@ void main() {
           exchangeRate: 32.0,
           type: RecordType.shopping, // Expense
           title: 'test',
+          date: DateTime(2025, 1, 1),
       );
 
       expect(recordDto.amount, -1);
@@ -44,6 +46,7 @@ void main() {
           exchangeRate: 32.0,
           type: RecordType.shopping, // Expense
           title: 'test',
+          date: DateTime(2025, 1, 1),
       );
 
       expect(recordDto.localAmount, -32);
@@ -55,6 +58,7 @@ void main() {
           currency: CurrencyType.usd,
           exchangeRate: 32.0,
           type: RecordType.bonus, // Income
+          date: DateTime(2025, 1, 1),
           title: 'test',
       );
 

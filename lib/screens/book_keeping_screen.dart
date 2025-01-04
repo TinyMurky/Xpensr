@@ -15,22 +15,28 @@ class BookKeepingScreen extends StatefulWidget {
 
 class _BookKeepingScreenState extends State<BookKeepingScreen> {
   final List<RecordDto> _testRecords = [
-    RecordDto.twd(amount: -30, type: RecordType.gifts, title: 'Chrismas Gift'),
-    RecordDto.twd(amount: 50, type: RecordType.salary, title: 'Chrismas Gift'),
+    RecordDto.twd(amount: -30, type: RecordType.gifts, title: 'Chrismas Gift', date: DateTime.now()),
+    RecordDto.twd(amount: 50, type: RecordType.salary, title: 'Chrismas Gift', date: DateTime.now()),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: ListView.builder(
-            itemCount: _testRecords.length,
-            itemBuilder: (BuildContext ctx, int idx) =>
-                RecordCard(recordDto: _testRecords[idx]),
-          ),
-        )
-      ],
+    return Container(
+      margin: EdgeInsets.symmetric(
+        vertical: 0.0,
+        horizontal: 16.0,
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _testRecords.length,
+              itemBuilder: (BuildContext ctx, int idx) =>
+                  RecordCard(recordDto: _testRecords[idx]),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

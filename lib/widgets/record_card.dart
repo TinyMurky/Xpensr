@@ -55,7 +55,7 @@ class _RecordCardState extends State<RecordCard> {
     }
 
     return Card(
-      elevation: _selected ? 1 : 4, // This control shadow
+      elevation: _selected ? 0.1 : 0.2, // This control shadow
       child: ListTile(
         enabled: _enabled,
         selected: _selected,

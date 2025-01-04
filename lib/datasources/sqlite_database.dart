@@ -62,6 +62,7 @@ class SQLiteDatabase {
             exchange_rate DOUBLE NOT NULL,
             system_base_currency CHAR(3) NOT NULL,
             type CHAR(50) NOT NULL,
+            date DATETIME NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             deleted_at DATETIME DEFAULT NULL

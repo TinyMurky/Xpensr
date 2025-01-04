@@ -40,6 +40,7 @@ Future main() async {
         amount: 100,
         type: RecordType.shopping,
         title: "Test buy",
+        date: DateTime(2025, 1, 1),
       );
 
       var createdDto = await dao!.insert(recordDto);
@@ -125,14 +126,29 @@ Future main() async {
         // Insert sample records for all tests in this group
         final records = [
           RecordDto.twd(
-              amount: 100, type: RecordType.shopping, title: "Shopping 1"),
+            amount: 100,
+            type: RecordType.shopping,
+            title: "Shopping 1",
+            date: DateTime(2025, 1, 1),
+          ),
           RecordDto.twd(
-              amount: 200, type: RecordType.shopping, title: "Shopping 2"),
-          RecordDto.twd(amount: 150, type: RecordType.dining, title: "Food 1"),
+            amount: 200,
+            type: RecordType.shopping,
+            title: "Shopping 2",
+            date: DateTime(2025, 1, 1),
+          ),
           RecordDto.twd(
-              amount: 300,
-              type: RecordType.entertainment,
-              title: "Entertainment 1"),
+            amount: 150,
+            type: RecordType.dining,
+            title: "Food 1",
+            date: DateTime(2025, 1, 1),
+          ),
+          RecordDto.twd(
+            amount: 300,
+            type: RecordType.entertainment,
+            title: "Entertainment 1",
+            date: DateTime(2025, 1, 1),
+          ),
         ];
 
         for (var record in records) {
